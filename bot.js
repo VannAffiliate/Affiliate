@@ -40,7 +40,7 @@ bot.command('promo', async (ctx) => {
                     ]
                 }
             }
-        );
+        });
     } catch (error) {
         console.error('Gagal mengirim gambar:', error);
         ctx.reply('Maaf, file gambar tidak ditemukan di folder lokal.');
