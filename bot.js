@@ -5,7 +5,7 @@ const bot = new Telegraf(process.env.TOKEN);
 
 // Mengambil daftar ID dari environment variable, dipisahkan dengan koma jika lebih dari satu
 // Contoh isi .env: ALLOWED_USER_IDS=123467890
-const ALLOWED_USER_IDS = process.env.ALLOWED_USER_IDS 
+const ALLOWED_USER_IDS = (process.env.ALLOWED_USER_IDS) 
     ? process.env.ALLOWED_USER_IDS.split(',').map(id => Number(id.trim())) 
     : [];
 
@@ -14,6 +14,7 @@ bot.command('promo', async (ctx) => {
     const userId = ctx.from.id;
     console.log('User ID yang mencoba akses:', userId); // Cek terminal/console Anda
     console.log('Daftar ID yang diizinkan:', ALLOWED_USER_IDS);
+    
     if (!ALLOWED_USER_IDS.includes(userId)) {
         return ctx.reply('⚠️ Maaf, Anda tidak memiliki akses untuk menggunakan perintah ini.');
     }
