@@ -1,10 +1,13 @@
+require('dotenv').config(); // Memuat konfigurasi dari file .env
 const { Telegraf } = require('telegraf');
 const fs = require('fs'); // Modul bawaan Node.js untuk membaca file
 
 const bot = new Telegraf(process.env.TOKEN);
 
-// Daftar ID Telegram user yang diizinkan (masukkan ID Anda di sini dalam bentuk angka)
-const ALLOWED_USER_IDS = (process.env.TOKEN) ; // Ganti dengan Telegram ID yang valid
+// Mengambil daftar ID dari .env, memecahnya berdasarkan koma, lalu ubah jadi angka (Number)
+const ALLOWED_USER_IDS = process.env.ALLOWED_USERS 
+    ? process.env.ALLOWED_USERS.split(',').map(id => Number(id.trim())) 
+    : [];
 
 bot.command('promo', async (ctx) => {
     // Cek apakah pengirim ada di dalam daftar user yang diizinkan
