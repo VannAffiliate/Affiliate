@@ -1,20 +1,14 @@
-require('dotenv').config(); // Memuat konfigurasi dari file .env
 const { Telegraf } = require('telegraf');
 const fs = require('fs'); // Modul bawaan Node.js untuk membaca file
 
 const bot = new Telegraf(process.env.TOKEN);
 
-// Mengambil daftar ID dari .env, memecahnya berdasarkan koma, lalu ubah jadi angka (Number)
-const ALLOWED_USER_IDS = process.env.ALLOWED_USERS 
-    ? process.env.ALLOWED_USERS.split(',').map(id => Number(id.trim())) 
-    : [];
+// Daftar ID Telegram user yang diizinkan (masukkan ID Anda di sini dalam bentuk angka)
+const ALLOWED_USER_IDS = [5595863964]; // Ganti dengan Telegram ID yang valid
 
 bot.command('promo', async (ctx) => {
     // Cek apakah pengirim ada di dalam daftar user yang diizinkan
     const userId = ctx.from.id;
-    console.log('User ID yang mencoba akses:', userId); // Cek terminal/console Anda
-    console.log('Daftar ID yang diizinkan:', ALLOWED_USER_IDS);
-    
     if (!ALLOWED_USER_IDS.includes(userId)) {
         return ctx.reply('⚠️ Maaf, Anda tidak memiliki akses untuk menggunakan perintah ini.');
     }
@@ -22,7 +16,7 @@ bot.command('promo', async (ctx) => {
         // Mengirim file gambar langsung dari folder lokal project Anda
         // Pastikan file 'banner.jpg' berada di folder yang sama dengan file bot.js
         await ctx.replyWithPhoto(
-            { source: fs.readFileSync('./gambar.jpeg') }, 
+            { source: fs.readFileSync('./gambar2.jpeg') }, 
             {
                 caption: '🔥 **PROMO SPESIAL HARI INI!** 🔥\n\nKlik tombol di bawah untuk berbelanja di Shopee.',
                 parse_mode: 'Markdown',
