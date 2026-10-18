@@ -3,8 +3,11 @@ const fs = require('fs'); // Modul bawaan Node.js untuk membaca file
 
 const bot = new Telegraf(process.env.TOKEN);
 
-// Daftar ID Telegram user yang diizinkan (masukkan ID Anda di sini dalam bentuk angka)
-const ALLOWED_USER_IDS = [5595863964]; // Ganti dengan Telegram ID yang valid
+// Mengambil daftar ID dari environment variable, dipisahkan dengan koma jika lebih dari satu
+// Contoh isi .env: ALLOWED_USER_IDS=123467890
+const ALLOWED_USER_IDS = process.env.ALLOWED_USER_IDS 
+    ? process.env.ALLOWED_USER_IDS.split(',').map(id => Number(id.trim())) 
+    : [];
 
 bot.command('promo', async (ctx) => {
     // Cek apakah pengirim ada di dalam daftar user yang diizinkan
@@ -16,7 +19,7 @@ bot.command('promo', async (ctx) => {
         // Mengirim file gambar langsung dari folder lokal project Anda
         // Pastikan file 'banner.jpg' berada di folder yang sama dengan file bot.js
         await ctx.replyWithPhoto(
-            { source: fs.readFileSync('./gambar.jpeg') , ('./gambar2.jpeg') , ('./gambar3.jpeg') }, 
+            { source: fs.readFileSync('./gambar.jpeg') }, 
             {
                 caption: '🔥 **PROMO SPESIAL HARI INI!** 🔥\n\nKlik tombol di bawah untuk berbelanja di Shopee.',
                 parse_mode: 'Markdown',
