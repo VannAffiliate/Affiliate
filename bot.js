@@ -15,7 +15,7 @@ bot.command('promo', async (ctx) => {
     try {
         // Mengirim file gambar langsung dari folder lokal project Anda
         // Pastikan file 'banner.jpg' berada di folder yang sama dengan file bot.js
-await ctx.replyWithPhoto(
+        await ctx.replyWithPhoto(
             { source: fs.readFileSync('./gambar.jpeg') }, 
             {
                 caption: '🔥 **PROMO SPESIAL HARI INI!** 🔥\n\nKlik tombol di bawah untuk berbelanja di Shopee.',
