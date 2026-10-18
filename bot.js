@@ -2,7 +2,6 @@ const { Telegraf } = require('telegraf');
 const fs = require('fs'); // Modul bawaan Node.js untuk membaca file
 
 const bot = new Telegraf(process.env.TOKEN);
-const SHOPEE_LINK = 'https://s.shopee.co.id/8KqJZRrU0Y';
 
 // Daftar ID Telegram user yang diizinkan (masukkan ID Anda di sini dalam bentuk angka)
 const ALLOWED_USER_IDS = [5595863964]; // Ganti dengan Telegram ID yang valid
@@ -24,7 +23,7 @@ bot.command('promo', async (ctx) => {
                 reply_markup: {
                     inline_keyboard: [
                         [
-                            { text: '🛒 BELI SEKARANG DI SHOPEE', url: SHOPEE_LINK }
+                            { text: '🛒 BELI SEKARANG DI SHOPEE', url: 'https://s.shopee.co.id/8KqJZRrU0Y' }
                         ]
                     ]
                 }
