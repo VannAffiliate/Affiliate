@@ -29,7 +29,7 @@ bot.command('promo', async (ctx) => {
             {
                 type: 'photo',
                 media: { source: fs.readFileSync('./gambar3.jpeg') }
-            });
+            }]);
         
         await ctx.reply('Silakan klik tombol di bawah untuk berbelanja:', {
                 reply_markup: {
