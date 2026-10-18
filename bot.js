@@ -15,23 +15,11 @@ bot.command('promo', async (ctx) => {
     try {
         // Mengirim file gambar langsung dari folder lokal project Anda
         // Pastikan file 'banner.jpg' berada di folder yang sama dengan file bot.js
-        await ctx.replyWithMediaGroup([
-            { 
-                type: 'photo',
-                media: { source: fs.readFileSync('./gambar.jpeg') }, 
+await ctx.replyWithPhoto(
+            { source: fs.readFileSync('./gambar.jpeg') }, 
+            {
                 caption: '🔥 **PROMO SPESIAL HARI INI!** 🔥\n\nKlik tombol di bawah untuk berbelanja di Shopee.',
-                parse_mode: 'Markdown'
-            },
-            {
-                type: 'photo',
-                media: { source: fs.readFileSync('./gambar2.jpeg') }
-            },
-            {
-                type: 'photo',
-                media: { source: fs.readFileSync('./gambar3.jpeg') }
-            }]);
-        
-        await ctx.reply('Silakan klik tombol di bawah untuk berbelanja:', {
+                parse_mode: 'Markdown',
                 reply_markup: {
                     inline_keyboard: [
                         [
@@ -40,7 +28,7 @@ bot.command('promo', async (ctx) => {
                     ]
                 }
             }
-        });
+        );
     } catch (error) {
         console.error('Gagal mengirim gambar:', error);
         ctx.reply('Maaf, file gambar tidak ditemukan di folder lokal.');
