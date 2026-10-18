@@ -12,6 +12,8 @@ const ALLOWED_USER_IDS = process.env.ALLOWED_USER_IDS
 bot.command('promo', async (ctx) => {
     // Cek apakah pengirim ada di dalam daftar user yang diizinkan
     const userId = ctx.from.id;
+    console.log('User ID yang mencoba akses:', userId); // Cek terminal/console Anda
+    console.log('Daftar ID yang diizinkan:', ALLOWED_USER_IDS);
     if (!ALLOWED_USER_IDS.includes(userId)) {
         return ctx.reply('⚠️ Maaf, Anda tidak memiliki akses untuk menggunakan perintah ini.');
     }
