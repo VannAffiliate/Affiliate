@@ -12,6 +12,7 @@ bot.command('promo', async (ctx) => {
     if (!ALLOWED_USER_IDS.includes(userId)) {
         return ctx.reply('⚠️ Maaf, Anda tidak memiliki akses untuk menggunakan perintah ini.');
     }
+    
     try {
         // Mengirim file gambar langsung dari folder lokal project Anda
         // Pastikan file 'banner.jpg' berada di folder yang sama dengan file bot.js
