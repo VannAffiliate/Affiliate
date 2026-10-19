@@ -1,4 +1,3 @@
-require('dotenv').config(); // Pastikan dotenv dipanggil di awal
 const { Telegraf } = require('telegraf');
 const fs = require('fs'); // Modul bawaan Node.js untuk membaca file
 
